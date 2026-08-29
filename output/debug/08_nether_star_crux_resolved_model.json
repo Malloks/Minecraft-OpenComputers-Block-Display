@@ -1,0 +1,76 @@
+{
+  "textures": {
+    "cross": "mysticalagradditions:blocks/nether_star_crop"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        8
+      ],
+      "to": [
+        16,
+        16,
+        8
+      ],
+      "faces": {
+        "north": {
+          "texture": "#cross",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "south": {
+          "texture": "#cross",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    },
+    {
+      "from": [
+        8,
+        0,
+        0
+      ],
+      "to": [
+        8,
+        16,
+        16
+      ],
+      "faces": {
+        "west": {
+          "texture": "#cross",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        },
+        "east": {
+          "texture": "#cross",
+          "uv": [
+            0,
+            0,
+            16,
+            16
+          ]
+        }
+      }
+    }
+  ],
+  "resolved_from": [
+    "mysticalagradditions:block/nether_star_crop",
+    "minecraft:block/cross",
+    "minecraft:block/block"
+  ]
+}

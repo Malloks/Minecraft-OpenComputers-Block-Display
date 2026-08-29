@@ -1,18 +1,30 @@
 local component = require("component")
 
 local args = {...}
-local path = args[1] or "storagedrawers_drawer_2x2.holo"
-local model = assert(loadfile(path))()
+local basePath = args[1] or ""
+if basePath ~= "" and string.sub(basePath, -1) ~= "/" then
+  basePath = basePath .. "/"
+end
 
 local currentFacing = 180
 local facings = {
   0, 0, 0,
   90, 90, 90, 90, 90
 }
+local modelFiles = {
+  "01_dust.holo",
+  "02_storage_drawer_4slot.holo",
+  "03_creative_cobble_gen.holo",
+  "04_smeltery_controller.holo",
+  "05_atomic_reconstructor.holo",
+  "06_ember_copper_cell.holo",
+  "07_woot_factory_layout.holo",
+  "08_nether_star_crux.holo"
+}
 local centerX = 24.5
 local centerZ = 24.5
 
-local function applyPalette(h)
+local function applyPalette(h, model)
   for i, color in ipairs(model.palette) do
     local packed = color[1] * 65536 + color[2] * 256 + color[3]
     h.setPaletteColor(i, packed)
@@ -44,10 +56,10 @@ local function targetFacing(index)
   return facings[index] or currentFacing
 end
 
-local function render(h, index)
+local function render(h, index, model)
   h.clear()
   h.setScale(1)
-  applyPalette(h)
+  applyPalette(h, model)
 
   local rendered = 0
   local rotation = targetFacing(index) - currentFacing
@@ -81,8 +93,20 @@ local count = 0
 for address in component.list("hologram") do
   count = count + 1
   local h = component.proxy(address)
-  local runs, facing = render(h, count)
-  print("rendered projector " .. tostring(count) .. " " .. address .. " facing=" .. tostring(facing) .. " runs=" .. tostring(runs))
+  local modelFile = modelFiles[count]
+  if modelFile then
+    local path = basePath .. modelFile
+    local loader, reason = loadfile(path)
+    if loader then
+      local model = loader()
+      local runs, facing = render(h, count, model)
+      print("rendered projector " .. tostring(count) .. " " .. address .. " file=" .. modelFile .. " facing=" .. tostring(facing) .. " runs=" .. tostring(runs))
+    else
+      print("skipped projector " .. tostring(count) .. " " .. address .. " missing=" .. path .. " reason=" .. tostring(reason))
+    end
+  else
+    print("skipped projector " .. tostring(count) .. " " .. address .. " no model configured")
+  end
 end
 
 print("done, projectors=" .. tostring(count))

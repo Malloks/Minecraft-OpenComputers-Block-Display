@@ -15,6 +15,46 @@ VANILLA_MODELS = {
             "faces": {d: {"texture": f"#{d}", "cullface": d} for d in ("down", "up", "north", "south", "west", "east")},
         }],
     },
+    "minecraft:block/cube_all": {
+        "parent": "minecraft:block/cube",
+        "textures": {d: "#all" for d in ("down", "up", "north", "south", "west", "east")},
+    },
+    "minecraft:block/orientable": {
+        "parent": "minecraft:block/block",
+        "elements": [{
+            "from": [0, 0, 0],
+            "to": [16, 16, 16],
+            "faces": {
+                "down": {"texture": "#down", "cullface": "down"},
+                "up": {"texture": "#up", "cullface": "up"},
+                "north": {"texture": "#front", "cullface": "north"},
+                "south": {"texture": "#side", "cullface": "south"},
+                "west": {"texture": "#side", "cullface": "west"},
+                "east": {"texture": "#side", "cullface": "east"},
+            },
+        }],
+    },
+    "minecraft:block/cross": {
+        "parent": "minecraft:block/block",
+        "elements": [
+            {
+                "from": [0, 0, 8],
+                "to": [16, 16, 8],
+                "faces": {
+                    "north": {"texture": "#cross", "uv": [0, 0, 16, 16]},
+                    "south": {"texture": "#cross", "uv": [0, 0, 16, 16]},
+                },
+            },
+            {
+                "from": [8, 0, 0],
+                "to": [8, 16, 16],
+                "faces": {
+                    "west": {"texture": "#cross", "uv": [0, 0, 16, 16]},
+                    "east": {"texture": "#cross", "uv": [0, 0, 16, 16]},
+                },
+            },
+        ],
+    },
 }
 
 

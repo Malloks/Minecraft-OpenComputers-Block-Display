@@ -1,0 +1,55 @@
+{
+  "textures": {
+    "down": "compacter:blocks/cobbler",
+    "up": "compacter:blocks/cobbler",
+    "north": "compacter:blocks/cobbler",
+    "south": "compacter:blocks/cobbler",
+    "west": "compacter:blocks/cobbler",
+    "east": "compacter:blocks/cobbler",
+    "all": "compacter:blocks/cobbler"
+  },
+  "elements": [
+    {
+      "from": [
+        0,
+        0,
+        0
+      ],
+      "to": [
+        16,
+        16,
+        16
+      ],
+      "faces": {
+        "down": {
+          "texture": "#down",
+          "cullface": "down"
+        },
+        "up": {
+          "texture": "#up",
+          "cullface": "up"
+        },
+        "north": {
+          "texture": "#north",
+          "cullface": "north"
+        },
+        "south": {
+          "texture": "#south",
+          "cullface": "south"
+        },
+        "west": {
+          "texture": "#west",
+          "cullface": "west"
+        },
+        "east": {
+          "texture": "#east",
+          "cullface": "east"
+        }
+      }
+    }
+  ],
+  "resolved_from": [
+    "compacter:cobbler",
+    "minecraft:block/cube_all"
+  ]
+}
