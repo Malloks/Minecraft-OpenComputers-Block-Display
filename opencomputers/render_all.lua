@@ -5,8 +5,10 @@ local path = args[1] or "storagedrawers_drawer_2x2.holo"
 local model = assert(loadfile(path))()
 
 local currentFacing = 180
-local firstFacing = 22.0
-local facingStep = 15.5
+local facings = {
+  0, 0, 0,
+  90, 90, 90, 90, 90
+}
 local centerX = 24.5
 local centerZ = 24.5
 
@@ -39,7 +41,7 @@ local function setVoxel(h, x, y, z, value, rotation)
 end
 
 local function targetFacing(index)
-  return firstFacing + facingStep * (index - 1)
+  return facings[index] or currentFacing
 end
 
 local function render(h, index)
