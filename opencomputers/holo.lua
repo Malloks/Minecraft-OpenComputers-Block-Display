@@ -3,7 +3,7 @@ local component = require("component")
 local args = {...}
 local path = args[1] or "storagedrawers_drawer_2x2.holo"
 local address = component.list("hologram")()
-assert(address, "no hologram projector found")
+assert(address)
 
 local h = component.proxy(address)
 local model = assert(loadfile(path))()
